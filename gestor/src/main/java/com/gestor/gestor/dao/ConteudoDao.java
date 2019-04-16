@@ -4,18 +4,10 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.gestor.gestor.model.Arquivo;
 import com.gestor.gestor.model.Conteudo;
 import com.gestor.gestor.util.MetadadoUtil;
 
@@ -49,18 +41,15 @@ public class ConteudoDao {
         
     }
 	
-	public List<Conteudo> find(List<Arquivo> arquivos) throws Exception{
-		List<Conteudo> conteudos = new ArrayList<>();
-		for (Arquivo arquivo : arquivos) {
-			String caminho = arquivo.getConteudo();
-			File file = new File(caminho);
-			FileInputStream lerConteudo = new FileInputStream(file);
-			Conteudo c = new Conteudo();
-			c.setBytes(lerConteudo.readAllBytes());
-			lerConteudo.close();
-			conteudos.add(c);
-		}
-		return conteudos;
+	public Conteudo findByPath(String caminho) throws Exception{
+		File arquivo = new File(caminho);
+		FileInputStream lerArquivo = new FileInputStream(arquivo);
+		byte[] bytes = new byte[(int)arquivo.length()];
+		lerArquivo.read(bytes);
+		lerArquivo.close();
+		Conteudo conteudo = new Conteudo();
+		conteudo.setBytes(bytes);
+		return conteudo;
 	} 
 
 }
