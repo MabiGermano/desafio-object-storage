@@ -1,5 +1,6 @@
 package com.gestor.gestor.model;
 
+
 public class Conteudo {
 	
 	private byte[] bytes;

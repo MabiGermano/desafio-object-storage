@@ -1,11 +1,20 @@
 package com.gestor.gestor.util;
 
 import java.util.Calendar;
-
 import org.springframework.context.annotation.Configuration;
+
+/**
+ * @author M. Beatriz Germano
+ * 
+ * Classe responsável para tratamentos necessários nos metadados relacionados ao Arquivo e Conteudo. 
+ **/
 @Configuration
 public class MetadadoUtil {
 
+	/**
+	 * Método obtem o momento atual (data e hora) e trasforma a formatação para string.
+	 * @return momentoUpload {@link String}  
+	 **/
 	public String obterMomentoAtual() {
 		Calendar c = Calendar.getInstance();
 		int ano = c.get(Calendar.YEAR);
