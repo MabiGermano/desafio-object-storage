@@ -46,7 +46,7 @@ public class ArquivoRest {
 	 *   @return the response entity
 	 **/
 	@RequestMapping(value = "/inserir",method = RequestMethod.POST)
-	public ResponseEntity<String> incluir(@RequestParam String nome,
+	public ResponseEntity<String> inserir(@RequestParam String nome,
 			@RequestParam MultipartFile file) throws IOException{
 		
 		Conteudo conteudo = new Conteudo();
